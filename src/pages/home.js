@@ -19,7 +19,7 @@ function Home(){
     const history = useHistory();  
 
     const autorization = () => {
-        axios.get(`http://localhost:3000/authenticated`,{
+        axios.get(process.env.REACT_APP_API_LINK + `authenticated`,{
             headers: {
                 "x-access-token": localStorage.getItem('token')
             }})
@@ -36,7 +36,7 @@ function Home(){
 
     const getName = () => {
         const Id = localStorage.getItem('id');
-        axios.get(`http://localhost:3000/user/${Id}`)
+        axios.get(process.env.REACT_APP_API_LINK + `user/${Id}`)
         .then(res => {
             setName(res.data.nama_awal);
         })

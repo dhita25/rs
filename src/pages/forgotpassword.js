@@ -11,7 +11,7 @@ function ForgotPassword () {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3000/forgotPassword',{
+        axios.post(process.env.REACT_APP_API_LINK + 'forgotPassword',{
             email
         })
         .then(res => {
