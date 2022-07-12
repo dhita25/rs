@@ -139,7 +139,7 @@ function Pasien(){
     }
 
     //file pdf
-    const pdfDownload = (nama,jenis_kelamin,biaya,penyakit,kamar,biaya_kamar,biaya_obat,biaya_perawatan,biayaTotal) => {
+    const pdfDownload = (nama,jenis_kelamin,penyakit,kamar,biaya_kamar,biaya_obat,biaya_perawatan,biayaTotal) => {
         const doc = new jsPDF();
         doc.text(80, 20, 'Rincian Biaya Pasien');
         doc.text(20, 40, 'Nama : '+nama);
@@ -153,7 +153,6 @@ function Pasien(){
         doc.save('Pasien.pdf');
 
     }
-
     if(localStorage.getItem('token') === null){
         history.push('/');
     }
@@ -276,7 +275,7 @@ function Pasien(){
                                                          return(
                                                             pasien.biaya.map((biaya,index) => {
                                                                 return(
-                                                                    <button type="submit" className="btn btn-outline-warning" onClick={()=>pdfDownload(pasien.nama,pasien.jenis_kelamin,pasien.biaya_perawatan+pasien.biaya_obat+pasien.biaya_kamar,penyakit.nama_penyakit,kamar.nama_kamar,biaya.harga,biaya.harga+pasien.biaya_perawatan+pasien.biaya_obat+pasien.biaya_kamar)}><MdIcons.MdDownload /></button>
+                                                                    <div className="p-2 col-example text-left"><button type="submit" className="btn btn-outline-warning" onClick={()=>pdfDownload(pasien.nama,pasien.jenis_kelamin,penyakit.nama_penyakit,kamar.nama_kamar,kamar.harga,penyakit.harga_obat,biaya.harga,pasien.biaya_perawatan+pasien.biaya_obat+pasien.biaya_kamar)}><MdIcons.MdDownload /></button></div>
                                                                 )
                                                                 })
                                                             )
@@ -293,7 +292,7 @@ function Pasien(){
                                                          return(
                                                             pasien.biaya.map((biaya,index) => {
                                                                 return(
-                                                                    <div className="p-2 col-example text-left"><button type="submit" className="btn btn-outline-warning" onClick={()=>pdfDownload(pasien.nama,pasien.jenis_kelamin,penyakit.nama_penyakit,kamar.nama_kamar,kamar.harga,penyakit.harga_obat,biaya.harga,biaya.harga+pasien.biaya_perawatan+pasien.biaya_obat+pasien.biaya_kamar)}><MdIcons.MdDownload /></button></div>
+                                                                    <div className="p-2 col-example text-left"><button type="submit" className="btn btn-outline-warning" onClick={()=>pdfDownload(pasien.nama,pasien.jenis_kelamin,penyakit.nama_penyakit,kamar.nama_kamar,kamar.harga,penyakit.harga_obat,biaya.harga,pasien.biaya_perawatan+pasien.biaya_obat+pasien.biaya_kamar)}><MdIcons.MdDownload /></button></div>
                                                                 )
                                                                 })
                                                             )
@@ -315,7 +314,7 @@ function Pasien(){
                                                             return(
                                                                 pasien.biaya.map((biaya,index) => {
                                                                     return(
-                                                                        <div className="p-2 col-example text-left"><button type="submit" className="btn btn-outline-warning" onClick={()=>pdfDownload(pasien.nama,pasien.jenis_kelamin,pasien.biaya_perawatan+pasien.biaya_obat+pasien.biaya_kamar,penyakit.nama_penyakit,kamar.nama_kamar,biaya.harga,biaya.harga+pasien.biaya_perawatan+pasien.biaya_obat+pasien.biaya_kamar)}><MdIcons.MdDownload /></button></div>
+                                                                        <div className="p-2 col-example text-left"><button type="submit" className="btn btn-outline-warning" onClick={()=>pdfDownload(pasien.nama,pasien.jenis_kelamin,penyakit.nama_penyakit,kamar.nama_kamar,kamar.harga,penyakit.harga_obat,biaya.harga,pasien.biaya_perawatan+pasien.biaya_obat+pasien.biaya_kamar)}><MdIcons.MdDownload /></button></div>
                                                                         
                                                                         
                                                                     )
